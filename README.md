@@ -1,125 +1,127 @@
-# Karty - Aplikace pro správu karet
+# Cards - Card Management Application
 
-Karty je mobilní aplikace pro Android, která umožňuje pohodlně spravovat všechny vaše karty na jednom místě. Můžete ukládat věrnostní karty, slevové karty, členské karty, platební karty a další typy karet.
+*This README is also available in [Czech](README_CZ.md) and [German](README_DE.md)*
 
-<!-- Logo aplikace bude přidáno později -->
+Cards is a mobile application for Android that allows you to conveniently manage all your cards in one place. You can store loyalty cards, discount cards, membership cards, payment cards, and other types of cards.
 
-## Funkce
+<!-- Application logo will be added later -->
 
-- **Správa různých typů karet** - věrnostní, slevové, členské, platební a jiné
-- **Fotografie karet** - uložení přední a zadní strany karty
-- **Čárové kódy** - generování a skenování čárových kódů
-- **Zabezpečení** - šifrování fotografií pomocí hesla
-- **Vyhledávání** - rychlé vyhledávání karet podle názvu
-- **Vícejazyčná podpora** - čeština, angličtina a němčina
+## Features
 
-## Snímky obrazovky
+- **Management of various card types** - loyalty, discount, membership, payment, and others
+- **Card photos** - storing front and back sides of cards
+- **Barcodes** - generating and scanning barcodes
+- **Security** - encrypting photos with a password
+- **Search** - quick search for cards by name
+- **Multilingual support** - Czech, English, and German
 
-*Snímky obrazovky budou přidány později*
+## Screenshots
 
-## Požadavky
+*Screenshots will be added later*
 
-- Android 13.0 (API úroveň 33) nebo novější
-- Fotoaparát pro snímání karet a čárových kódů
+## Requirements
 
-## Instalace
+- Android 13.0 (API level 33) or newer
+- Camera for capturing cards and barcodes
 
-### Stažení a instalace APK
+## Installation
 
-1. Stáhněte si nejnovější APK soubor z [releases](https://github.com/JiriPrik/karty/releases)
-2. Na zařízení otevřete správce souborů
-3. Najděte stažený APK soubor a klikněte na něj
-4. Povolte instalaci z neznámých zdrojů, pokud je to vyžadováno
-5. Postupujte podle pokynů pro instalaci
+### Downloading and Installing APK
 
-### Sestavení ze zdrojového kódu
+1. Download the latest APK file from [releases](https://github.com/JiriPrik/karty/releases) or directly from the [releases directory](releases/app-release.apk)
+2. Open the file manager on your device
+3. Find the downloaded APK file and click on it
+4. Allow installation from unknown sources if required
+5. Follow the installation instructions
 
-1. Naklonujte repozitář:
+### Building from Source Code
+
+1. Clone the repository:
    ```
    git clone https://github.com/JiriPrik/karty.git
    ```
 
-2. Otevřete projekt v Android Studiu
+2. Open the project in Android Studio
 
-3. Sestavte projekt:
+3. Build the project:
    ```
    ./gradlew assembleDebug
    ```
-   nebo
+   or
    ```
    ./gradlew assembleRelease
    ```
 
-4. Nainstalujte APK na zařízení:
-   - Připojte zařízení k počítači pomocí USB kabelu
-   - Povolte ladění USB na zařízení
-   - Spusťte:
+4. Install the APK on your device:
+   - Connect your device to your computer using a USB cable
+   - Enable USB debugging on your device
+   - Run:
      ```
      adb install app/build/outputs/apk/debug/app-debug.apk
      ```
-     nebo
+     or
      ```
      adb install app/build/outputs/apk/release/app-release.apk
      ```
 
-## Použití
+## Usage
 
-1. **První spuštění**
-   - Při prvním spuštění aplikace si nastavíte heslo, které budete používat pro přihlášení
-   - Toto heslo je také použito pro šifrování fotografií karet
+1. **First Launch**
+   - When you first launch the application, you will set a password that you will use for login
+   - This password is also used for encrypting card photos
 
-2. **Přidání karty**
-   - Klikněte na tlačítko + v pravém dolním rohu hlavní obrazovky
-   - Vyplňte informace o kartě (název, typ, číslo)
-   - Vyfotografujte přední a zadní stranu karty
-   - Naskenujte čárový kód nebo zadejte data čárového kódu ručně
-   - Klikněte na tlačítko Uložit
+2. **Adding a Card**
+   - Click the + button in the bottom right corner of the main screen
+   - Fill in the card information (name, type, number)
+   - Take photos of the front and back sides of the card
+   - Scan the barcode or enter barcode data manually
+   - Click the Save button
 
-3. **Zobrazení karty**
-   - Klikněte na kartu v seznamu pro zobrazení detailů
-   - Klikněte na fotografii pro zobrazení na celou obrazovku
-   - Klikněte na tlačítko Zobrazit čárový kód pro zobrazení čárového kódu
+3. **Viewing a Card**
+   - Click on a card in the list to view its details
+   - Click on a photo to view it in full screen
+   - Click the Show Barcode button to display the barcode
 
-4. **Úprava karty**
-   - V detailu karty klikněte na tlačítko Upravit
-   - Proveďte požadované změny
-   - Klikněte na tlačítko Uložit
+4. **Editing a Card**
+   - In the card details, click the Edit button
+   - Make the desired changes
+   - Click the Save button
 
-5. **Smazání karty**
-   - V detailu karty klikněte na tlačítko Smazat
-   - Potvrďte smazání karty
+5. **Deleting a Card**
+   - In the card details, click the Delete button
+   - Confirm the deletion of the card
 
-6. **Vyhledávání karet**
-   - Klikněte na ikonu lupy v horní liště aplikace
-   - Zadejte název karty
-   - Aplikace zobrazí odpovídající karty
+6. **Searching for Cards**
+   - Click the magnifying glass icon in the top bar of the application
+   - Enter the card name
+   - The application will display matching cards
 
-7. **Změna jazyka**
-   - Na úvodní obrazovce klikněte na tlačítko CZ, EN nebo DE
-   - Aplikace se restartuje a zobrazí se ve vybraném jazyce
+7. **Changing the Language**
+   - On the splash screen, click the CZ, EN, or DE button
+   - The application will restart and display in the selected language
 
-## Přispívání
+## Contributing
 
-Příspěvky jsou vítány! Pokud chcete přispět k vývoji aplikace, postupujte takto:
+Contributions are welcome! If you want to contribute to the development of the application, follow these steps:
 
-1. Forkněte repozitář
-2. Vytvořte novou větev (`git checkout -b feature/amazing-feature`)
-3. Proveďte změny
-4. Commitněte změny (`git commit -m 'Add some amazing feature'`)
-5. Pushněte do větve (`git push origin feature/amazing-feature`)
-6. Otevřete Pull Request
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add some amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
 
-## Licence
+## License
 
-Tento projekt je licencován pod licencí MIT - viz soubor [LICENSE](LICENSE) pro více informací.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more information.
 
-## Kontakt
+## Contact
 
 PiKi
 
-Odkaz na projekt: [https://github.com/JiriPrik/karty](https://github.com/JiriPrik/karty)
+Project link: [https://github.com/JiriPrik/karty](https://github.com/JiriPrik/karty)
 
-## Poděkování
+## Acknowledgements
 
-- Děkujeme všem, kteří přispěli k vývoji této aplikace
-- Děkujeme za podporu prostřednictvím Lightning Network plateb na adresu: jiprik@bitlifi.com
+- Thanks to everyone who contributed to the development of this application
+- Thanks for your support through Lightning Network payments to: jiprik@bitlifi.com
