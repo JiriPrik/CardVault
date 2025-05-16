@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App name -->
+    <string name="app_name">Karty</string>
+
+    <!-- Login screen -->
+    <string name="enter_password">Zadejte heslo</string>
+    <string name="continue_button">Pokračovat</string>
+    <string name="help_button">Návod k aplikaci</string>
+    <string name="copyright">\u00a9 Všechna práva vyhrazena</string>
+    <string name="created_by">PiKi 2025</string>
+    <string name="language">Jazyk</string>
+    <string name="donate">Přispět</string>
+    <string name="donate_title">Přispějte na vývoj</string>
+    <string name="donate_message">Děkujeme za vaši podporu! Můžete poslat satoshi pomocí Lightning Network na adresu:\n\njiprik@bitlifi.com</string>
+    <string name="donate_close">Zavřít</string>
+
+    <!-- Main screen -->
+    <string name="search_cards">Hledat karty</string>
+    <string name="add_card">Přidat kartu</string>
+    <string name="no_cards">Zatím nemáte žádné karty</string>
+
+    <!-- Card types -->
+    <string name="loyalty_card">Věrnostní karta</string>
+    <string name="discount_card">Slevová karta</string>
+    <string name="membership_card">Členská karta</string>
+    <string name="payment_card">Platební karta</string>
+    <string name="other_card">Jiná karta</string>
+
+    <!-- Card edit screen -->
+    <string name="edit_card">Upravit kartu</string>
+    <string name="add_new_card">Přidat novou kartu</string>
+    <string name="card_name">Název karty</string>
+    <string name="card_type">Typ karty</string>
+    <string name="card_number">Číslo karty</string>
+    <string name="barcode_data">Data čárového kódu</string>
+    <string name="barcode_type">Typ čárového kódu</string>
+    <string name="barcode_type_helper">Ovlivňuje formát generovaného čárového kódu</string>
+    <string name="notes">Poznámky</string>
+    <string name="front_image">Přední strana</string>
+    <string name="back_image">Zadní strana</string>
+    <string name="capture_front">Vyfotit přední stranu</string>
+    <string name="capture_back">Vyfotit zadní stranu</string>
+    <string name="scan_barcode">Skenovat čárový kód</string>
+    <string name="change_barcode_type">Změnit</string>
+    <string name="save">Uložit</string>
+    <string name="barcode_preview">Náhled čárového kódu</string>
+
+    <!-- Card detail screen -->
+    <string name="card_detail">Detail karty</string>
+    <string name="show_barcode">Zobrazit čárový kód</string>
+    <string name="edit">Upravit</string>
+    <string name="delete">Smazat</string>
+    <string name="confirm_delete">Opravdu chcete smazat tuto kartu?</string>
+    <string name="yes">Ano</string>
+    <string name="no">Ne</string>
+
+    <!-- Barcode dialog -->
+    <string name="select_barcode_type">Vyberte typ čárového kódu</string>
+    <string name="use_detected_type">Použít detekovaný typ</string>
+    <string name="cancel">Zrušit</string>
+
+    <!-- Messages -->
+    <string name="card_saved">Karta byla uložena</string>
+    <string name="card_deleted">Karta byla smazána</string>
+    <string name="error_saving_card">Chyba při ukládání karty</string>
+    <string name="error_deleting_card">Chyba při mazání karty</string>
+    <string name="error_loading_image">Nelze načíst fotografii</string>
+    <string name="error_generating_barcode">Nelze vygenerovat čárový kód</string>
+    <string name="barcode_scanned">Čárový kód úspěšně naskenován</string>
+    <string name="invalid_password">Neplatné heslo</string>
+    <string name="set_password">Nastavte heslo pro příští přihlášení</string>
+    <string name="not_specified">Není zadáno</string>
+    <string name="no_notes">Žádné poznámky</string>
+    <string name="created">Vytvořeno</string>
+    <string name="updated">Aktualizováno</string>
+    <string name="error_searching">Chyba při vyhledávání</string>
+    <string name="card_type_not_specified">Typ karty není zadán</string>
+    <string name="card_number_not_specified">Číslo karty není zadáno</string>
+    <string name="error_loading_encrypted_image">Nelze načíst zašifrovaný obrázek</string>
+    <string name="password_not_available">heslo není k dispozici</string>
+    <string name="error_fullscreen_barcode">Nelze zobrazit čárový kód na celou obrazovku</string>
+    <string name="error_fullscreen_image">Nelze zobrazit fotografii na celou obrazovku</string>
+    <string name="card_updated">Karta byla aktualizována</string>
+    <string name="card_added">Karta byla přidána</string>
+    <string name="card_not_found">Karta nebyla nalezena</string>
+
+    <!-- Help screen -->
+    <string name="help_title">Návod k aplikaci</string>
+    <string name="close_help">Zavřít návod</string>
+</resources>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".view.HelpActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Karty1.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Karty1.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aplikace Karty"
+                android:textColor="@color/primary_text"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Verze 1.0"
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/divider" />
+
+            <!-- Sekce 1: Úvod -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Úvod"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Aplikace Karty vám umožňuje pohodlně spravovat všechny vaše karty na jednom místě. Můžete ukládat věrnostní karty, slevové karty, členské karty, platební karty a další typy karet."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 2: Přihlášení -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="2. Přihlášení"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Při prvním spuštění aplikace si nastavíte heslo, které budete používat pro přihlášení. Toto heslo je také použito pro šifrování fotografií karet, proto si ho dobře zapamatujte."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 3: Hlavní obrazovka -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="3. Hlavní obrazovka"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Na hlavní obrazovce vidíte seznam všech vašich karet. Karty jsou zobrazeny ve dvou sloupcích s náhledy fotografií jako podkres. Pro přidání nové karty klikněte na tlačítko + v pravém dolním rohu obrazovky."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 4: Přidání karty -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="4. Přidání karty"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Při přidávání karty můžete zadat následující informace:\n\n• Název karty\n• Typ karty (věrnostní, slevová, členská, platební, jiná)\n• Číslo karty\n• Čárový kód\n• Poznámky\n\nTaké můžete vyfotit přední a zadní stranu karty kliknutím na příslušné ikony fotoaparátu."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 5: Detail karty -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="5. Detail karty"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Kliknutím na kartu v seznamu zobrazíte její detail. Zde vidíte všechny informace o kartě včetně fotografií přední a zadní strany. Kliknutím na fotografii ji zobrazíte na celou obrazovku. Pokud karta obsahuje čárový kód, můžete ho zobrazit kliknutím na tlačítko 'Zobrazit čárový kód'."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 6: Úprava a mazání karet -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="6. Úprava a mazání karet"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="V detailu karty můžete kartu upravit kliknutím na tlačítko 'Upravit' nebo ji smazat kliknutím na tlačítko 'Smazat'."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 7: Vyhledávání -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="7. Vyhledávání"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Pro vyhledávání karet klikněte na ikonu lupy v horní liště aplikace. Zadejte název karty a aplikace vám zobrazí odpovídající karty."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 8: Bezpečnost -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="8. Bezpečnost"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Aplikace používá šifrování pro ochranu fotografií karet. Fotografie jsou šifrovány pomocí hesla, které zadáváte při přihlášení. Toto zajišťuje, že i když někdo získá přístup k souborům aplikace, nebude schopen zobrazit fotografie bez znalosti hesla."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 9: Kontakt -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="9. Kontakt"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Aplikaci vytvořil PiKi, 2025.\nPro podporu nebo dotazy kontaktujte vývojáře."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/close_help"
+        app:srcCompat="@drawable/ic_close"
+        app:backgroundTint="@color/accent"
+        app:elevation="6dp"
+        app:fabSize="normal" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

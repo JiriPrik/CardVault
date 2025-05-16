@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Pozadí loga -->
+    <path
+        android:fillColor="#3F51B5"
+        android:pathData="M0,0h108v108h-108z" />
+
+    <!-- Karta 1 - spodní -->
+    <path
+        android:fillColor="#E1E1E1"
+        android:pathData="M28,38L68,38A6,6 0,0 1,74 44L74,74A6,6 0,0 1,68 80L28,80A6,6 0,0 1,22 74L22,44A6,6 0,0 1,28 38z" />
+
+    <!-- Magnetický proužek na kartě 1 -->
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M22,50h52v8h-52z" />
+
+    <!-- Karta 2 - prostřední -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,32L72,32A6,6 0,0 1,78 38L78,68A6,6 0,0 1,72 74L32,74A6,6 0,0 1,26 68L26,38A6,6 0,0 1,32 32z" />
+
+    <!-- Čip na kartě 2 -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M38,44L48,44A2,2 0,0 1,50 46L50,56A2,2 0,0 1,48 58L38,58A2,2 0,0 1,36 56L36,46A2,2 0,0 1,38 44z" />
+
+    <!-- Karta 3 - horní -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M36,26L76,26A6,6 0,0 1,82 32L82,62A6,6 0,0 1,76 68L36,68A6,6 0,0 1,30 62L30,32A6,6 0,0 1,36 26z" />
+
+    <!-- Čárový kód na kartě 3 -->
+    <path
+        android:fillColor="#212121"
+        android:pathData="M40,40h2v16h-2z" />
+    <path
+        android:fillColor="#212121"
+        android:pathData="M44,40h1v16h-1z" />
+    <path
+        android:fillColor="#212121"
+        android:pathData="M47,40h3v16h-3z" />
+    <path
+        android:fillColor="#212121"
+        android:pathData="M52,40h1v16h-1z" />
+    <path
+        android:fillColor="#212121"
+        android:pathData="M55,40h2v16h-2z" />
+    <path
+        android:fillColor="#212121"
+        android:pathData="M59,40h3v16h-3z" />
+    <path
+        android:fillColor="#212121"
+        android:pathData="M64,40h2v16h-2z" />
+    <path
+        android:fillColor="#212121"
+        android:pathData="M68,40h1v16h-1z" />
+
+    <!-- Text "PiKi" na kartě 3 -->
+    <path
+        android:fillColor="#3F51B5"
+        android:pathData="M48,60h20v4h-20z" />
+</vector>

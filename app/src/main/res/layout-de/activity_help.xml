@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".view.HelpActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Karty1.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Karty1.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Karten Anwendung"
+                android:textColor="@color/primary_text"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Version 1.0"
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/divider" />
+
+            <!-- Abschnitt 1: Einführung -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Einführung"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Die Karten-Anwendung ermöglicht es Ihnen, alle Ihre Karten bequem an einem Ort zu verwalten. Sie können Treuekarten, Rabattkarten, Mitgliedskarten, Zahlungskarten und andere Kartentypen speichern."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 2: Anmeldung -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="2. Anmeldung"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Beim ersten Start der Anwendung legen Sie ein Passwort fest, das Sie für die Anmeldung verwenden werden. Dieses Passwort wird auch zur Verschlüsselung von Kartenfotos verwendet, also merken Sie es sich gut."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 3: Hauptbildschirm -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="3. Hauptbildschirm"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Auf dem Hauptbildschirm sehen Sie eine Liste aller Ihrer Karten. Die Karten werden in zwei Spalten mit Fotovorschauen als Hintergrund angezeigt. Um eine neue Karte hinzuzufügen, klicken Sie auf die Schaltfläche + in der unteren rechten Ecke des Bildschirms."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 4: Karte hinzufügen -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="4. Karte hinzufügen"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Beim Hinzufügen einer Karte können Sie folgende Informationen eingeben:\n\n• Kartenname\n• Kartentyp (Treuekarte, Rabattkarte, Mitgliedskarte, Zahlungskarte, andere)\n• Kartennummer\n• Barcode\n• Notizen\n\nSie können auch Fotos von der Vorder- und Rückseite der Karte machen, indem Sie auf die entsprechenden Kamerasymbole klicken."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 5: Kartendetail -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="5. Kartendetail"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Durch Klicken auf eine Karte in der Liste können Sie deren Details anzeigen. Hier sehen Sie alle Informationen über die Karte, einschließlich Fotos der Vorder- und Rückseite. Klicken Sie auf ein Foto, um es im Vollbildmodus anzuzeigen. Wenn die Karte einen Barcode enthält, können Sie ihn anzeigen, indem Sie auf die Schaltfläche 'Barcode anzeigen' klicken."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 6: Karten bearbeiten und löschen -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="6. Karten bearbeiten und löschen"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="In der Kartendetailansicht können Sie die Karte bearbeiten, indem Sie auf die Schaltfläche 'Bearbeiten' klicken, oder sie löschen, indem Sie auf die Schaltfläche 'Löschen' klicken."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 7: Suchen -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="7. Suchen"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Um nach Karten zu suchen, klicken Sie auf das Lupensymbol in der oberen Leiste der Anwendung. Geben Sie den Kartennamen ein, und die Anwendung zeigt passende Karten an."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 8: Sicherheit -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="8. Sicherheit"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Die Anwendung verwendet Verschlüsselung zum Schutz von Kartenfotos. Fotos werden mit dem Passwort verschlüsselt, das Sie bei der Anmeldung eingeben. Dies stellt sicher, dass selbst wenn jemand Zugriff auf die Anwendungsdateien erhält, er die Fotos ohne Kenntnis des Passworts nicht anzeigen kann."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 9: Kontakt -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="9. Kontakt"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Anwendung erstellt von PiKi, 2025.\nFür Support oder Fragen kontaktieren Sie den Entwickler."
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/close_help"
+        app:srcCompat="@drawable/ic_close"
+        app:backgroundTint="@color/accent"
+        app:elevation="6dp"
+        app:fabSize="normal" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App name -->
+    <string name="app_name">Cards</string>
+
+    <!-- Login screen -->
+    <string name="enter_password">Enter password</string>
+    <string name="continue_button">Continue</string>
+    <string name="help_button">Application Guide</string>
+    <string name="copyright">\u00a9 All rights reserved</string>
+    <string name="created_by">PiKi 2025</string>
+    <string name="language">Language</string>
+    <string name="donate">Donate</string>
+    <string name="donate_title">Support Development</string>
+    <string name="donate_message">Thank you for your support! You can send satoshis via Lightning Network to:\n\njiprik@bitlifi.com</string>
+    <string name="donate_close">Close</string>
+
+    <!-- Main screen -->
+    <string name="search_cards">Search cards</string>
+    <string name="add_card">Add card</string>
+    <string name="no_cards">You don\'t have any cards yet</string>
+
+    <!-- Card types -->
+    <string name="loyalty_card">Loyalty card</string>
+    <string name="discount_card">Discount card</string>
+    <string name="membership_card">Membership card</string>
+    <string name="payment_card">Payment card</string>
+    <string name="other_card">Other card</string>
+
+    <!-- Card edit screen -->
+    <string name="edit_card">Edit card</string>
+    <string name="add_new_card">Add new card</string>
+    <string name="card_name">Card name</string>
+    <string name="card_type">Card type</string>
+    <string name="card_number">Card number</string>
+    <string name="barcode_data">Barcode data</string>
+    <string name="barcode_type">Barcode type</string>
+    <string name="barcode_type_helper">Affects the format of the generated barcode</string>
+    <string name="notes">Notes</string>
+    <string name="front_image">Front side</string>
+    <string name="back_image">Back side</string>
+    <string name="capture_front">Capture front side</string>
+    <string name="capture_back">Capture back side</string>
+    <string name="scan_barcode">Scan barcode</string>
+    <string name="change_barcode_type">Change</string>
+    <string name="save">Save</string>
+    <string name="barcode_preview">Barcode preview</string>
+
+    <!-- Card detail screen -->
+    <string name="card_detail">Card detail</string>
+    <string name="show_barcode">Show barcode</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_delete">Are you sure you want to delete this card?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- Barcode dialog -->
+    <string name="select_barcode_type">Select barcode type</string>
+    <string name="use_detected_type">Use detected type</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Messages -->
+    <string name="card_saved">Card has been saved</string>
+    <string name="card_deleted">Card has been deleted</string>
+    <string name="error_saving_card">Error saving card</string>
+    <string name="error_deleting_card">Error deleting card</string>
+    <string name="error_loading_image">Cannot load image</string>
+    <string name="error_generating_barcode">Cannot generate barcode</string>
+    <string name="barcode_scanned">Barcode successfully scanned</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="set_password">Set password for next login</string>
+    <string name="not_specified">Not specified</string>
+    <string name="no_notes">No notes</string>
+    <string name="created">Created</string>
+    <string name="updated">Updated</string>
+    <string name="error_searching">Error searching</string>
+    <string name="card_type_not_specified">Card type not specified</string>
+    <string name="card_number_not_specified">Card number not specified</string>
+    <string name="error_loading_encrypted_image">Cannot load encrypted image</string>
+    <string name="password_not_available">password not available</string>
+    <string name="error_fullscreen_barcode">Cannot display barcode in full screen</string>
+    <string name="error_fullscreen_image">Cannot display image in full screen</string>
+    <string name="card_updated">Card has been updated</string>
+    <string name="card_added">Card has been added</string>
+    <string name="card_not_found">Card not found</string>
+
+    <!-- Help screen -->
+    <string name="help_title">Application Guide</string>
+    <string name="close_help">Close guide</string>
+</resources>

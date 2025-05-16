@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App name -->
+    <string name="app_name">Karten</string>
+
+    <!-- Login screen -->
+    <string name="enter_password">Passwort eingeben</string>
+    <string name="continue_button">Fortfahren</string>
+    <string name="help_button">Anwendungsanleitung</string>
+    <string name="copyright">\u00a9 Alle Rechte vorbehalten</string>
+    <string name="created_by">PiKi 2025</string>
+    <string name="language">Sprache</string>
+    <string name="donate">Spenden</string>
+    <string name="donate_title">Entwicklung unterstützen</string>
+    <string name="donate_message">Vielen Dank für Ihre Unterstützung! Sie können Satoshis über das Lightning Network an folgende Adresse senden:\n\njiprik@bitlifi.com</string>
+    <string name="donate_close">Schließen</string>
+
+    <!-- Main screen -->
+    <string name="search_cards">Karten suchen</string>
+    <string name="add_card">Karte hinzufügen</string>
+    <string name="no_cards">Sie haben noch keine Karten</string>
+
+    <!-- Card types -->
+    <string name="loyalty_card">Treuekarte</string>
+    <string name="discount_card">Rabattkarte</string>
+    <string name="membership_card">Mitgliedskarte</string>
+    <string name="payment_card">Zahlungskarte</string>
+    <string name="other_card">Andere Karte</string>
+
+    <!-- Card edit screen -->
+    <string name="edit_card">Karte bearbeiten</string>
+    <string name="add_new_card">Neue Karte hinzufügen</string>
+    <string name="card_name">Kartenname</string>
+    <string name="card_type">Kartentyp</string>
+    <string name="card_number">Kartennummer</string>
+    <string name="barcode_data">Barcode-Daten</string>
+    <string name="barcode_type">Barcode-Typ</string>
+    <string name="barcode_type_helper">Beeinflusst das Format des generierten Barcodes</string>
+    <string name="notes">Notizen</string>
+    <string name="front_image">Vorderseite</string>
+    <string name="back_image">Rückseite</string>
+    <string name="capture_front">Vorderseite fotografieren</string>
+    <string name="capture_back">Rückseite fotografieren</string>
+    <string name="scan_barcode">Barcode scannen</string>
+    <string name="change_barcode_type">Ändern</string>
+    <string name="save">Speichern</string>
+    <string name="barcode_preview">Barcode-Vorschau</string>
+
+    <!-- Card detail screen -->
+    <string name="card_detail">Kartendetail</string>
+    <string name="show_barcode">Barcode anzeigen</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="delete">Löschen</string>
+    <string name="confirm_delete">Möchten Sie diese Karte wirklich löschen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+
+    <!-- Barcode dialog -->
+    <string name="select_barcode_type">Barcode-Typ auswählen</string>
+    <string name="use_detected_type">Erkannten Typ verwenden</string>
+    <string name="cancel">Abbrechen</string>
+
+    <!-- Messages -->
+    <string name="card_saved">Karte wurde gespeichert</string>
+    <string name="card_deleted">Karte wurde gelöscht</string>
+    <string name="error_saving_card">Fehler beim Speichern der Karte</string>
+    <string name="error_deleting_card">Fehler beim Löschen der Karte</string>
+    <string name="error_loading_image">Bild kann nicht geladen werden</string>
+    <string name="error_generating_barcode">Barcode kann nicht generiert werden</string>
+    <string name="barcode_scanned">Barcode erfolgreich gescannt</string>
+    <string name="invalid_password">Ungültiges Passwort</string>
+    <string name="set_password">Passwort für die nächste Anmeldung festlegen</string>
+    <string name="not_specified">Nicht angegeben</string>
+    <string name="no_notes">Keine Notizen</string>
+    <string name="created">Erstellt</string>
+    <string name="updated">Aktualisiert</string>
+    <string name="error_searching">Fehler bei der Suche</string>
+    <string name="card_type_not_specified">Kartentyp nicht angegeben</string>
+    <string name="card_number_not_specified">Kartennummer nicht angegeben</string>
+    <string name="error_loading_encrypted_image">Verschlüsseltes Bild kann nicht geladen werden</string>
+    <string name="password_not_available">Passwort nicht verfügbar</string>
+    <string name="error_fullscreen_barcode">Barcode kann nicht im Vollbildmodus angezeigt werden</string>
+    <string name="error_fullscreen_image">Bild kann nicht im Vollbildmodus angezeigt werden</string>
+    <string name="card_updated">Karte wurde aktualisiert</string>
+    <string name="card_added">Karte wurde hinzugefügt</string>
+    <string name="card_not_found">Karte nicht gefunden</string>
+
+    <!-- Help screen -->
+    <string name="help_title">Anwendungsanleitung</string>
+    <string name="close_help">Anleitung schließen</string>
+</resources>
