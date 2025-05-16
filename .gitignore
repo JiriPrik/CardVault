@@ -90,6 +90,6 @@ Thumbs.db
 ehthumbs.db
 
 # Specific files
-app-release.apk
+# app-release.apk
 app-debug.apk
 app-release-unsigned.apk
