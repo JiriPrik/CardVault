@@ -28,7 +28,7 @@ Karten ist eine mobile Anwendung für Android, mit der Sie alle Ihre Karten bequ
 
 ### Herunterladen und Installieren der APK
 
-1. Laden Sie die neueste APK-Datei von [Releases](https://github.com/JiriPrik/karty/releases) oder direkt aus dem [Releases-Verzeichnis](releases/app-release.apk) herunter
+1. Laden Sie die neueste APK-Datei von [Releases](https://github.com/JiriPrik/karty/releases) oder direkt aus dem [Releases-Verzeichnis](https://github.com/JiriPrik/karty/tree/main/releases) herunter
 2. Öffnen Sie den Dateimanager auf Ihrem Gerät
 3. Suchen Sie die heruntergeladene APK-Datei und klicken Sie darauf
 4. Erlauben Sie die Installation aus unbekannten Quellen, falls erforderlich

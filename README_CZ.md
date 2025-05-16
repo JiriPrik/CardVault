@@ -28,7 +28,7 @@ Karty je mobilní aplikace pro Android, která umožňuje pohodlně spravovat v�
 
 ### Stažení a instalace APK
 
-1. Stáhněte si nejnovější APK soubor z [releases](https://github.com/JiriPrik/karty/releases) nebo přímo z [adresáře releases](releases/app-release.apk)
+1. Stáhněte si nejnovější APK soubor z [releases](https://github.com/JiriPrik/karty/releases) nebo přímo z [adresáře releases](https://github.com/JiriPrik/karty/tree/main/releases)
 2. Na zařízení otevřete správce souborů
 3. Najděte stažený APK soubor a klikněte na něj
 4. Povolte instalaci z neznámých zdrojů, pokud je to vyžadováno

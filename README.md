@@ -28,7 +28,7 @@ Cards is a mobile application for Android that allows you to conveniently manage
 
 ### Downloading and Installing APK
 
-1. Download the latest APK file from [releases](https://github.com/JiriPrik/karty/releases) or directly from the [releases directory](releases/app-release.apk)
+1. Download the latest APK file from [releases](https://github.com/JiriPrik/karty/releases) or directly from the [releases directory](https://github.com/JiriPrik/karty/tree/main/releases)
 2. Open the file manager on your device
 3. Find the downloaded APK file and click on it
 4. Allow installation from unknown sources if required
