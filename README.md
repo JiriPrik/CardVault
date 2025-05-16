@@ -2,7 +2,7 @@
 
 Karty je mobilní aplikace pro Android, která umožňuje pohodlně spravovat všechny vaše karty na jednom místě. Můžete ukládat věrnostní karty, slevové karty, členské karty, platební karty a další typy karet.
 
-![Karty Logo](app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp)
+<!-- Logo aplikace bude přidáno později -->
 
 ## Funkce
 
@@ -115,7 +115,7 @@ Tento projekt je licencován pod licencí MIT - viz soubor [LICENSE](LICENSE) pr
 
 ## Kontakt
 
-PiKi - [prikryl.jiri@gmail.com](mailto:prikryl.jiri@gmail.com)
+PiKi
 
 Odkaz na projekt: [https://github.com/JiriPrik/karty](https://github.com/JiriPrik/karty)
 
