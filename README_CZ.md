@@ -119,7 +119,7 @@ Tento projekt je licencován pod licencí MIT - viz soubor [LICENSE](LICENSE) pr
 
 PiKi
 
-Odkaz na projekt: [https://github.com/JiriPrik/karty](https://github.com/JiriPrik/karty)
+Odkaz na projekt: [https://github.com/JiriPrik/CardVault](https://github.com/JiriPrik/CardVault)
 
 ## Poděkování
 

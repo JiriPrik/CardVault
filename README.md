@@ -119,7 +119,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 PiKi
 
-Project link: [https://github.com/JiriPrik/karty](https://github.com/JiriPrik/karty)
+Project link: [https://github.com/JiriPrik/CardVault](https://github.com/JiriPrik/CardVault)
 
 ## Acknowledgements
 
