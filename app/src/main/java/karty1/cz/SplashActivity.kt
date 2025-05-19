@@ -9,9 +9,11 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.textfield.TextInputEditText
 import karty1.cz.util.LanguageManager
 import karty1.cz.util.LogHelper
@@ -45,6 +47,10 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var languageManager: LanguageManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Inicializace PreferenceManager a aplikace motivu
+        preferenceManager = PreferenceManager(this)
+        preferenceManager.applyThemeMode()
+
         super.onCreate(savedInstanceState)
 
         // Inicializace správce jazyka a nastavení jazyka
@@ -56,7 +62,6 @@ class SplashActivity : AppCompatActivity() {
         // Inicializace komponent
         editPassword = findViewById(R.id.editPassword)
         buttonContinue = findViewById(R.id.buttonContinue)
-        preferenceManager = PreferenceManager(this)
         logoContainer = findViewById(R.id.logoContainer)
         imageLogo = findViewById(R.id.imageLogo)
         cardsContainer = findViewById(R.id.cardsContainer)
@@ -102,6 +107,11 @@ class SplashActivity : AppCompatActivity() {
             LogHelper.d(TAG, "Kliknutí na tlačítko příspěvku")
             showDonateDialog()
         }
+
+        // Nastavení verze aplikace
+        val textVersion = findViewById<TextView>(R.id.textVersion)
+        // Použijeme pevně nastavenou verzi, protože BuildConfig není dostupný
+        textVersion.text = "v1.4"
 
         // Spuštění animací
         startAnimations()

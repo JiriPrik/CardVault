@@ -1,8 +1,8 @@
-# Karty - Aplikace pro správu karet
+# Card Vault - Aplikace pro správu karet
 
 *Tento README je také dostupný v [angličtině](README.md) a [němčině](README_DE.md)*
 
-Karty je mobilní aplikace pro Android, která umožňuje pohodlně spravovat všechny vaše karty na jednom místě. Můžete ukládat věrnostní karty, slevové karty, členské karty, platební karty a další typy karet.
+Card Vault je mobilní aplikace pro Android, která umožňuje pohodlně spravovat všechny vaše karty na jednom místě. Můžete ukládat věrnostní karty, slevové karty, členské karty, platební karty a další typy karet.
 
 <!-- Logo aplikace bude přidáno později -->
 

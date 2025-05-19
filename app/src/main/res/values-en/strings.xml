@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App name -->
-    <string name="app_name">Cards</string>
+    <string name="app_name">Card Vault</string>
 
     <!-- Login screen -->
     <string name="enter_password">Enter password</string>
@@ -19,6 +19,21 @@
     <string name="search_cards">Search cards</string>
     <string name="add_card">Add card</string>
     <string name="no_cards">You don\'t have any cards yet</string>
+
+    <!-- Theme settings -->
+    <string name="theme">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System</string>
+
+    <!-- Backup and restore -->
+    <string name="backup">Backup data</string>
+    <string name="restore">Restore data</string>
+    <string name="backup_created">Backup created: %1$s</string>
+    <string name="backup_failed">Failed to create backup</string>
+    <string name="restore_successful">Data restored successfully</string>
+    <string name="restore_failed">Failed to restore data</string>
+    <string name="confirm">Confirm</string>
 
     <!-- Card types -->
     <string name="loyalty_card">Loyalty card</string>

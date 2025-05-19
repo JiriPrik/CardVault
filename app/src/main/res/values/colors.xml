@@ -9,7 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Nové barvy pro moderní design -->
+    <!-- Barvy pro světlý motiv -->
     <color name="primary">#1976D2</color>
     <color name="primary_dark">#1565C0</color>
     <color name="primary_light">#BBDEFB</color>
@@ -19,4 +19,17 @@
     <color name="divider">#BDBDBD</color>
     <color name="background_color">#F5F5F5</color>
     <color name="card_background">#FFFFFF</color>
+
+    <!-- Barvy pro tmavý motiv -->
+    <color name="primary_dark_theme">#2196F3</color>
+    <color name="primary_dark_variant_dark_theme">#0D47A1</color>
+    <color name="primary_light_dark_theme">#4FC3F7</color>
+    <color name="accent_dark_theme">#FF80AB</color>
+    <color name="primary_text_dark_theme">#FFFFFF</color>
+    <color name="secondary_text_dark_theme">#B3FFFFFF</color>
+    <color name="divider_dark_theme">#1FFFFFFF</color>
+    <color name="background_color_dark_theme">#121212</color>
+    <color name="card_background_dark_theme">#1F1F1F</color>
+    <color name="input_box_stroke_dark_theme">#2196F3</color>
+    <color name="input_box_stroke_inactive_dark_theme">#AAAAAA</color>
 </resources>

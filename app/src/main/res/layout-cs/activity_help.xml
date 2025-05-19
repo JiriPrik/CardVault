@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aplikace Karty"
+                android:text="Card Vault"
                 android:textColor="@color/primary_text"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Verze 1.0"
+                android:text="Verze 1.4"
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp" />
 
@@ -199,12 +199,30 @@
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp" />
 
-            <!-- Sekce 9: Kontakt -->
+            <!-- Sekce 9: Zálohování a obnovení dat -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="9. Kontakt"
+                android:text="9. Zálohování a obnovení dat"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Aplikace umožňuje zálohovat a obnovovat vaše data (databázi karet a fotografie). Záloha je šifrovaná vaším přihlašovacím heslem.\n\nPro vytvoření zálohy:\n1. Klikněte na tři tečky v pravém horním rohu hlavní obrazovky\n2. Vyberte 'Zálohovat data'\n3. Záloha bude uložena do složky Download/KartyBackup na vašem zařízení\n\nPro obnovení dat ze zálohy:\n1. Klikněte na tři tečky v pravém horním rohu hlavní obrazovky\n2. Vyberte 'Obnovit data'\n3. Vyberte soubor zálohy\n4. Data budou obnovena a aplikace se restartuje"
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Sekce 10: Kontakt -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="10. Kontakt"
                 android:textColor="@color/primary_text"
                 android:textSize="20sp"
                 android:textStyle="bold" />

@@ -1,8 +1,8 @@
-# Cards - Card Management Application
+# Card Vault - Card Management Application
 
 *This README is also available in [Czech](README_CZ.md) and [German](README_DE.md)*
 
-Cards is a mobile application for Android that allows you to conveniently manage all your cards in one place. You can store loyalty cards, discount cards, membership cards, payment cards, and other types of cards.
+Card Vault is a mobile application for Android that allows you to conveniently manage all your cards in one place. You can store loyalty cards, discount cards, membership cards, payment cards, and other types of cards.
 
 <!-- Application logo will be added later -->
 

@@ -1,8 +1,8 @@
-# Karten - Kartenverwaltungsanwendung
+# Card Vault - Kartenverwaltungsanwendung
 
 *Dieses README ist auch verfügbar in [Tschechisch](README_CZ.md) und [Englisch](README.md)*
 
-Karten ist eine mobile Anwendung für Android, mit der Sie alle Ihre Karten bequem an einem Ort verwalten können. Sie können Treuekarten, Rabattkarten, Mitgliedskarten, Zahlungskarten und andere Kartentypen speichern.
+Card Vault ist eine mobile Anwendung für Android, mit der Sie alle Ihre Karten bequem an einem Ort verwalten können. Sie können Treuekarten, Rabattkarten, Mitgliedskarten, Zahlungskarten und andere Kartentypen speichern.
 
 <!-- Anwendungslogo wird später hinzugefügt -->
 

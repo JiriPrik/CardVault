@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/background_color"
+    android:background="?android:colorBackground"
     tools:context=".view.CardDetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/card_name"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textAppearance="@style/TextAppearance.Karty1.Title" />
 
             <TextView
                 android:id="@+id/textCardName"
@@ -49,6 +50,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"
                 android:textSize="20sp"
+                android:textAppearance="@style/TextAppearance.Karty1.Body"
                 tools:text="Věrnostní karta XYZ" />
 
             <!-- Typ karty -->
@@ -57,7 +59,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/card_type"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textAppearance="@style/TextAppearance.Karty1.Title" />
 
             <TextView
                 android:id="@+id/textCardType"
@@ -66,6 +69,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"
                 android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.Karty1.Body"
                 tools:text="Věrnostní karta" />
 
             <!-- Číslo karty -->
@@ -74,7 +78,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/card_number"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textAppearance="@style/TextAppearance.Karty1.Title" />
 
             <TextView
                 android:id="@+id/textCardNumber"
@@ -83,6 +88,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"
                 android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.Karty1.Body"
                 tools:text="1234 5678 9012 3456" />
 
             <!-- Čárový kód -->
@@ -91,7 +97,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/barcode_preview"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textAppearance="@style/TextAppearance.Karty1.Title" />
 
             <ImageView
                 android:id="@+id/imageBarcode"

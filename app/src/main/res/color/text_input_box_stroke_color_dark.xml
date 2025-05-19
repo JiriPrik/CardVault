@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Barva okraje při zaměření -->
+    <item android:color="@color/input_box_stroke_dark_theme" android:state_focused="true"/>
+    <!-- Barva okraje při hoveru -->
+    <item android:color="@color/input_box_stroke_dark_theme" android:state_hovered="true"/>
+    <!-- Výchozí barva okraje (neaktivní stav) -->
+    <item android:color="@color/input_box_stroke_inactive_dark_theme"/>
+</selector>

@@ -1,6 +1,6 @@
 <resources>
     <!-- App name -->
-    <string name="app_name">Karty</string>
+    <string name="app_name">Card Vault</string>
 
     <!-- Login screen -->
     <string name="enter_password">Zadejte heslo</string>
@@ -18,6 +18,21 @@
     <string name="search_cards">Hledat karty</string>
     <string name="add_card">Přidat kartu</string>
     <string name="no_cards">Zatím nemáte žádné karty</string>
+
+    <!-- Theme settings -->
+    <string name="theme">Motiv</string>
+    <string name="theme_light">Světlý</string>
+    <string name="theme_dark">Tmavý</string>
+    <string name="theme_system">Systémový</string>
+
+    <!-- Backup and restore -->
+    <string name="backup">Zálohovat data</string>
+    <string name="restore">Obnovit data</string>
+    <string name="backup_created">Záloha byla vytvořena: %1$s</string>
+    <string name="backup_failed">Nepodařilo se vytvořit zálohu</string>
+    <string name="restore_successful">Data byla úspěšně obnovena</string>
+    <string name="restore_failed">Nepodařilo se obnovit data</string>
+    <string name="confirm">Potvrdit</string>
 
     <!-- Card types -->
     <string name="loyalty_card">Věrnostní karta</string>

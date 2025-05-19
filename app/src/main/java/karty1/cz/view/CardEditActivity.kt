@@ -64,7 +64,7 @@ class CardEditActivity : BaseActivity() {
     private lateinit var imageBack: ImageView
     private lateinit var btnCaptureFront: Button
     private lateinit var btnCaptureBack: Button
-    private lateinit var btnScanBarcode: Button
+    // Odstraněno duplicitní tlačítko pro skenování čárového kódu
     private lateinit var btnChangeBarcodeType: Button
     private lateinit var fabSave: FloatingActionButton
     private lateinit var barcodeDataLayout: TextInputLayout
@@ -158,7 +158,7 @@ class CardEditActivity : BaseActivity() {
             imageBack = findViewById(R.id.imageBack)
             btnCaptureFront = findViewById(R.id.btnCaptureFront)
             btnCaptureBack = findViewById(R.id.btnCaptureBack)
-            btnScanBarcode = findViewById(R.id.btnScanBarcode)
+            // Odstraněno duplicitní tlačítko pro skenování čárového kódu
             btnChangeBarcodeType = findViewById(R.id.btnChangeBarcodeType)
             fabSave = findViewById(R.id.fabSave)
             barcodeDataLayout = findViewById(R.id.barcodeDataLayout)
@@ -189,11 +189,7 @@ class CardEditActivity : BaseActivity() {
             }
         })
 
-        // Tlačítko pro skenování čárového kódu
-        btnScanBarcode.setOnClickListener {
-            // Spuštění skeneru čárových kódů
-            barcodeScannerHelper.startBarcodeScanner("Naskenujte čárový kód karty")
-        }
+        // Odstraněno duplicitní tlačítko pro skenování čárového kódu
 
         // Ikona skenování v poli pro data čárového kódu
         barcodeDataLayout.setEndIconOnClickListener {

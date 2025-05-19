@@ -2,16 +2,30 @@ package karty1.cz
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import karty1.cz.util.BackupHelper
+import java.io.File
+import java.io.FileOutputStream
+import android.Manifest
+import android.content.pm.PackageManager
 import karty1.cz.model.Card
 import karty1.cz.util.LogHelper
 import karty1.cz.util.PreferenceManager
@@ -24,19 +38,27 @@ import java.util.Date
 
 class MainActivity : BaseActivity() {
 
+    companion object {
+        private const val TAG = "MainActivity"
+        private const val REQUEST_CODE_ADD_CARD = 1
+        private const val REQUEST_CODE_VIEW_CARD = 2
+        private const val REQUEST_CODE_SELECT_BACKUP = 3
+        private const val REQUEST_STORAGE_PERMISSION = 100
+    }
+
     // Inicializace ViewModelu
     private val cardViewModel: CardViewModel by viewModels()
     private lateinit var cardAdapter: CardAdapter
-    private lateinit var preferenceManager: PreferenceManager
+    // preferenceManager je již inicializován v BaseActivity
+
+    // Seznam všech karet pro filtrování
+    private var allCards: List<Card> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Nastavení XML layoutu jako obsahu aktivity
         setContentView(R.layout.activity_main)
-
-        // Inicializace PreferenceManager
-        preferenceManager = PreferenceManager(this)
 
         // Získání hesla pro šifrování z intentu
         val encryptionPassword = intent.getStringExtra("encryption_password") ?: ""
@@ -122,33 +144,7 @@ class MainActivity : BaseActivity() {
         startActivity(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                REQUEST_CODE_ADD_CARD -> {
-                    // Karta byla přidána, nic dalšího není potřeba dělat,
-                    // protože LiveData automaticky aktualizuje seznam
-                }
-                REQUEST_CODE_EDIT_CARD -> {
-                    // Karta byla upravena nebo smazána, nic dalšího není potřeba dělat,
-                    // protože LiveData automaticky aktualizuje seznam
-                }
-            }
-        }
-    }
-
     // Metoda pro přidání ukázkové karty byla odstraněna
-
-    companion object {
-        private const val REQUEST_CODE_ADD_CARD = 1
-        private const val REQUEST_CODE_EDIT_CARD = 2
-        private const val TAG = "MainActivity"
-    }
-
-    // Seznam všech karet
-    private var allCards: List<Card> = emptyList()
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Nahraje menu z XML souboru
@@ -214,6 +210,208 @@ class MainActivity : BaseActivity() {
         } catch (e: Exception) {
             LogHelper.e(TAG, "Chyba při filtrování karet: ${e.message}", e)
             Toast.makeText(this, "${getString(R.string.error_searching)}: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_theme -> {
+                showThemeSelectionDialog()
+                true
+            }
+            R.id.action_backup -> {
+                backupData()
+                true
+            }
+            R.id.action_restore -> {
+                restoreData()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    /**
+     * Zobrazí dialog pro výběr motivu aplikace.
+     */
+    private fun showThemeSelectionDialog() {
+        val themes = arrayOf(
+            getString(R.string.theme_light),
+            getString(R.string.theme_dark),
+            getString(R.string.theme_system)
+        )
+
+        val currentThemeMode = preferenceManager.getThemeMode()
+        val currentThemeIndex = when (currentThemeMode) {
+            PreferenceManager.THEME_MODE_LIGHT -> 0
+            PreferenceManager.THEME_MODE_DARK -> 1
+            else -> 2 // THEME_MODE_SYSTEM
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.theme))
+            .setSingleChoiceItems(themes, currentThemeIndex) { dialog, which ->
+                val selectedThemeMode = when (which) {
+                    0 -> PreferenceManager.THEME_MODE_LIGHT
+                    1 -> PreferenceManager.THEME_MODE_DARK
+                    else -> PreferenceManager.THEME_MODE_SYSTEM
+                }
+
+                // Uložení vybraného motivu
+                preferenceManager.setThemeMode(selectedThemeMode)
+
+                // Aplikace vybraného motivu
+                AppCompatDelegate.setDefaultNightMode(selectedThemeMode)
+
+                dialog.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    /**
+     * Kontroluje, zda má aplikace oprávnění pro přístup k úložišti.
+     */
+    private fun hasStoragePermission(): Boolean {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    /**
+     * Vyžádá oprávnění pro přístup k úložišti.
+     */
+    private fun requestStoragePermission() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES),
+                REQUEST_STORAGE_PERMISSION
+            )
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ),
+                REQUEST_STORAGE_PERMISSION
+            )
+        }
+    }
+
+    /**
+     * Zálohuje data aplikace.
+     */
+    private fun backupData() {
+        // Kontrola oprávnění pro přístup k úložišti
+        if (!hasStoragePermission()) {
+            requestStoragePermission()
+            return
+        }
+
+        // Vytvoření zálohy
+        val backupHelper = BackupHelper()
+        val backupFile = backupHelper.createBackup(this, preferenceManager.getEncryptionPassword())
+
+        if (backupFile != null) {
+            Toast.makeText(this, getString(R.string.backup_created, backupFile.absolutePath), Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, getString(R.string.backup_failed), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * Obnoví data aplikace ze zálohy.
+     */
+    private fun restoreData() {
+        // Kontrola oprávnění pro přístup k úložišti
+        if (!hasStoragePermission()) {
+            requestStoragePermission()
+            return
+        }
+
+        // Výběr souboru zálohy
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "*/*"
+            putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream"))
+        }
+        startActivityForResult(intent, REQUEST_CODE_SELECT_BACKUP)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CODE_SELECT_BACKUP -> {
+                    data?.data?.let { uri ->
+                        // Kopírování vybraného souboru do dočasného souboru
+                        val inputStream = contentResolver.openInputStream(uri)
+                        val tempFile = File(cacheDir, "backup.enc")
+                        val outputStream = FileOutputStream(tempFile)
+                        inputStream?.copyTo(outputStream)
+                        inputStream?.close()
+                        outputStream.close()
+
+                        // Obnovení zálohy
+                        val backupHelper = BackupHelper()
+                        val success = backupHelper.restoreBackup(this, tempFile, preferenceManager.getEncryptionPassword())
+
+                        if (success) {
+                            Toast.makeText(this, getString(R.string.restore_successful), Toast.LENGTH_SHORT).show()
+                            // Restart aplikace pro načtení obnovených dat
+                            val intent = Intent(this, SplashActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(this, getString(R.string.restore_failed), Toast.LENGTH_SHORT).show()
+                        }
+
+                        // Smazání dočasného souboru
+                        tempFile.delete()
+                    }
+                }
+                REQUEST_CODE_ADD_CARD -> {
+                    // Karta byla přidána, nic nemusíme dělat, LiveData se aktualizuje automaticky
+                }
+                REQUEST_CODE_VIEW_CARD -> {
+                    // Karta byla upravena nebo smazána, nic nemusíme dělat, LiveData se aktualizuje automaticky
+                }
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == REQUEST_STORAGE_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Oprávnění bylo uděleno, můžeme pokračovat
+                if (permissions[0] == Manifest.permission.READ_EXTERNAL_STORAGE ||
+                    permissions[0] == Manifest.permission.READ_MEDIA_IMAGES) {
+                    // Zkusíme znovu zálohovat nebo obnovit data
+                }
+            } else {
+                // Oprávnění bylo zamítnuto
+                Toast.makeText(this, "Pro zálohování a obnovení dat je potřeba přístup k úložišti", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

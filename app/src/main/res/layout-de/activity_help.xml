@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Version 1.0"
+                android:text="Version 1.4"
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp" />
 
@@ -199,12 +199,30 @@
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp" />
 
-            <!-- Abschnitt 9: Kontakt -->
+            <!-- Abschnitt 9: Sicherung und Wiederherstellung -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="9. Kontakt"
+                android:text="9. Sicherung und Wiederherstellung"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Die Anwendung ermöglicht es Ihnen, Ihre Daten (Kartendatenbank und Fotos) zu sichern und wiederherzustellen. Die Sicherung wird mit Ihrem Anmeldekennwort verschlüsselt.\n\nUm eine Sicherung zu erstellen:\n1. Klicken Sie auf die drei Punkte in der oberen rechten Ecke des Hauptbildschirms\n2. Wählen Sie 'Daten sichern'\n3. Die Sicherung wird im Ordner Download/KartyBackup auf Ihrem Gerät gespeichert\n\nUm Daten aus einer Sicherung wiederherzustellen:\n1. Klicken Sie auf die drei Punkte in der oberen rechten Ecke des Hauptbildschirms\n2. Wählen Sie 'Daten wiederherstellen'\n3. Wählen Sie die Sicherungsdatei aus\n4. Die Daten werden wiederhergestellt und die Anwendung wird neu gestartet"
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp" />
+
+            <!-- Abschnitt 10: Kontakt -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="10. Kontakt"
                 android:textColor="@color/primary_text"
                 android:textSize="20sp"
                 android:textStyle="bold" />
