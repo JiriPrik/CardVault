@@ -28,7 +28,7 @@ Card Vault ist eine mobile Anwendung für Android, mit der Sie alle Ihre Karten 
 
 ### Herunterladen und Installieren der APK
 
-1. Laden Sie die neueste APK-Datei von [Releases](https://github.com/JiriPrik/karty/releases) oder direkt aus dem [Releases-Verzeichnis](https://github.com/JiriPrik/karty/tree/main/releases) herunter
+1. Laden Sie die neueste APK-Datei von [Releases](https://github.com/JiriPrik/CardVault/releases) oder direkt aus dem [Releases-Verzeichnis](https://github.com/JiriPrik/CardVault/tree/main/releases) herunter
 2. Öffnen Sie den Dateimanager auf Ihrem Gerät
 3. Suchen Sie die heruntergeladene APK-Datei und klicken Sie darauf
 4. Erlauben Sie die Installation aus unbekannten Quellen, falls erforderlich
@@ -38,7 +38,7 @@ Card Vault ist eine mobile Anwendung für Android, mit der Sie alle Ihre Karten 
 
 1. Klonen Sie das Repository:
    ```
-   git clone https://github.com/JiriPrik/karty.git
+   git clone https://github.com/JiriPrik/CardVault.git
    ```
 
 2. Öffnen Sie das Projekt in Android Studio
