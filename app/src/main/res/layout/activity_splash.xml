@@ -230,7 +230,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
-        android:text="v1.4"
+        android:text="v1.5"
         android:textColor="@android:color/white"
         android:textSize="12sp"
         android:alpha="0.7"

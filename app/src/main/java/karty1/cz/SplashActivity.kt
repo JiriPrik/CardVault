@@ -111,7 +111,7 @@ class SplashActivity : AppCompatActivity() {
         // Nastavení verze aplikace
         val textVersion = findViewById<TextView>(R.id.textVersion)
         // Použijeme pevně nastavenou verzi, protože BuildConfig není dostupný
-        textVersion.text = "v1.4"
+        textVersion.text = "v1.5"
 
         // Spuštění animací
         startAnimations()

@@ -26,13 +26,7 @@
     <string name="theme_dark">Dunkel</string>
     <string name="theme_system">System</string>
 
-    <!-- Backup and restore -->
-    <string name="backup">Daten sichern</string>
-    <string name="restore">Daten wiederherstellen</string>
-    <string name="backup_created">Sicherung erstellt: %1$s</string>
-    <string name="backup_failed">Sicherung konnte nicht erstellt werden</string>
-    <string name="restore_successful">Daten erfolgreich wiederhergestellt</string>
-    <string name="restore_failed">Daten konnten nicht wiederhergestellt werden</string>
+
     <string name="confirm">Bestätigen</string>
 
     <!-- Card types -->

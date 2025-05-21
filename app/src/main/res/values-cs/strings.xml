@@ -26,13 +26,7 @@
     <string name="theme_dark">Tmavý</string>
     <string name="theme_system">Systémový</string>
 
-    <!-- Backup and restore -->
-    <string name="backup">Zálohovat data</string>
-    <string name="restore">Obnovit data</string>
-    <string name="backup_created">Záloha byla vytvořena: %1$s</string>
-    <string name="backup_failed">Nepodařilo se vytvořit zálohu</string>
-    <string name="restore_successful">Data byla úspěšně obnovena</string>
-    <string name="restore_failed">Nepodařilo se obnovit data</string>
+
     <string name="confirm">Potvrdit</string>
 
     <!-- Card types -->
