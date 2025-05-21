@@ -25,13 +25,7 @@
     <string name="theme_dark">Tmavý</string>
     <string name="theme_system">Systémový</string>
 
-    <!-- Backup and restore -->
-    <string name="backup">Zálohovat data</string>
-    <string name="restore">Obnovit data</string>
-    <string name="backup_created">Záloha byla vytvořena: %1$s</string>
-    <string name="backup_failed">Nepodařilo se vytvořit zálohu</string>
-    <string name="restore_successful">Data byla úspěšně obnovena</string>
-    <string name="restore_failed">Nepodařilo se obnovit data</string>
+
     <string name="confirm">Potvrdit</string>
 
     <!-- Card types -->
@@ -55,8 +49,11 @@
     <string name="back_image">Zadní strana</string>
     <string name="capture_front">Vyfotit přední stranu</string>
     <string name="capture_back">Vyfotit zadní stranu</string>
+    <string name="crop_front">Ořezat přední stranu</string>
+    <string name="crop_back">Ořezat zadní stranu</string>
     <string name="scan_barcode">Skenovat čárový kód</string>
     <string name="change_barcode_type">Změnit</string>
+    <string name="copy_to_card_number">Kopírovat do čísla karty</string>
     <string name="save">Uložit</string>
     <string name="barcode_preview">Náhled čárového kódu</string>
 
@@ -82,6 +79,8 @@
     <string name="error_loading_image">Nelze načíst fotografii</string>
     <string name="error_generating_barcode">Nelze vygenerovat čárový kód</string>
     <string name="barcode_scanned">Čárový kód úspěšně naskenován</string>
+    <string name="barcode_copied">Čárový kód byl zkopírován do čísla karty</string>
+    <string name="no_barcode_to_copy">Žádný čárový kód k zkopírování</string>
     <string name="invalid_password">Neplatné heslo</string>
     <string name="set_password">Nastavte heslo pro příští přihlášení</string>
     <string name="not_specified">Není zadáno</string>
@@ -95,6 +94,9 @@
     <string name="password_not_available">heslo není k dispozici</string>
     <string name="error_fullscreen_barcode">Nelze zobrazit čárový kód na celou obrazovku</string>
     <string name="error_fullscreen_image">Nelze zobrazit fotografii na celou obrazovku</string>
+    <string name="error_cropping_image">Nelze ořezat fotografii</string>
+    <string name="image_cropped">Fotografie byla ořezána</string>
+    <string name="no_image_to_crop">Žádná fotografie k ořezání</string>
     <string name="card_updated">Karta byla aktualizována</string>
     <string name="card_added">Karta byla přidána</string>
     <string name="card_not_found">Karta nebyla nalezena</string>
@@ -102,4 +104,7 @@
     <!-- Help screen -->
     <string name="help_title">Návod k aplikaci</string>
     <string name="close_help">Zavřít návod</string>
+
+    <string name="empty_password">Heslo nesmí být prázdné</string>
+    <string name="permission_denied">Pro přístup k úložišti je potřeba udělit oprávnění</string>
 </resources>

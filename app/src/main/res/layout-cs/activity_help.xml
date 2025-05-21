@@ -213,7 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Aplikace umožňuje zálohovat a obnovovat vaše data (databázi karet a fotografie). Záloha je šifrovaná vaším přihlašovacím heslem.\n\nPro vytvoření zálohy:\n1. Klikněte na tři tečky v pravém horním rohu hlavní obrazovky\n2. Vyberte 'Zálohovat data'\n3. Záloha bude uložena do složky Download/KartyBackup na vašem zařízení\n\nPro obnovení dat ze zálohy:\n1. Klikněte na tři tečky v pravém horním rohu hlavní obrazovky\n2. Vyberte 'Obnovit data'\n3. Vyberte soubor zálohy\n4. Data budou obnovena a aplikace se restartuje"
+                android:text="Aplikace umožňuje ukládat vaše karty a jejich fotografie. Všechna data jsou uložena pouze na vašem zařízení a jsou šifrovaná vaším přihlašovacím heslem."
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp" />
 

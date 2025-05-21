@@ -136,6 +136,15 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
             </LinearLayout>
 
+            <!-- Tlačítko pro kopírování čárového kódu do čísla karty -->
+            <Button
+                android:id="@+id/btnCopyBarcodeToCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/copy_to_card_number"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
             <!-- Náhled čárového kódu -->
             <TextView
                 android:layout_width="match_parent"
@@ -188,6 +197,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/capture_front"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                    <Button
+                        android:id="@+id/btnCropFront"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/crop_front"
+                        android:layout_marginTop="4dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -210,6 +227,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/capture_back"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                    <Button
+                        android:id="@+id/btnCropBack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/crop_back"
+                        android:layout_marginTop="4dp"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
                 </LinearLayout>
             </LinearLayout>

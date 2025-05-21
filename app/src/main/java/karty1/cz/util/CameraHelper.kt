@@ -31,6 +31,7 @@ class CameraHelper(private val context: Context) {
 
     companion object {
         const val REQUEST_IMAGE_CAPTURE = 1
+        const val REQUEST_IMAGE_CROP = 2
         const val REQUEST_PERMISSION_CAMERA = 100
         const val REQUEST_PERMISSION_STORAGE = 101
 
@@ -255,6 +256,124 @@ class CameraHelper(private val context: Context) {
             }
         } catch (e: Exception) {
             LogHelper.e(TAG, "Chyba při šifrování souboru: ${e.message}", e)
+            return null
+        }
+    }
+
+    /**
+     * Spustí aktivitu pro ořezání obrázku.
+     * Pokud je obrázek zašifrovaný, nejprve ho dešifruje do dočasného souboru.
+     *
+     * @param activity Aktivita, ze které je metoda volána
+     * @param imagePath Cesta k obrázku, který má být ořezán
+     * @param password Heslo pro dešifrování (pokud je obrázek zašifrovaný)
+     * @return Cesta k dočasnému souboru pro ořezání nebo null, pokud se nepodařilo připravit obrázek
+     */
+    fun cropImage(activity: Activity, imagePath: String?, password: String? = null): String? {
+        if (imagePath == null) return null
+
+        try {
+            // Kontrola, zda soubor existuje
+            val sourceFile = File(imagePath)
+            if (!sourceFile.exists()) {
+                LogHelper.e(TAG, "Zdrojový soubor neexistuje: $imagePath")
+                return null
+            }
+
+            // Kontrola, zda je obrázek zašifrovaný
+            val isEncrypted = imagePath.endsWith(".enc")
+            LogHelper.d(TAG, "cropImage: Cesta k obrázku: $imagePath, zašifrovaný: $isEncrypted")
+
+            // Cesta k dočasnému souboru pro ořezání
+            val tempFile: File
+
+            if (isEncrypted && password != null) {
+                // Dešifrování souboru do dočasného souboru
+                tempFile = File.createTempFile("crop_", ".jpg", context.cacheDir)
+                LogHelper.d(TAG, "cropImage: Dešifruji soubor do: ${tempFile.absolutePath}")
+                val success = EncryptionHelper.decryptFile(sourceFile, tempFile, password)
+
+                if (!success) {
+                    LogHelper.e(TAG, "Nepodařilo se dešifrovat soubor pro ořezání: $imagePath")
+                    tempFile.delete()
+                    return null
+                }
+            } else {
+                // Kopírování souboru do dočasného souboru
+                tempFile = File.createTempFile("crop_", ".jpg", context.cacheDir)
+                LogHelper.d(TAG, "cropImage: Kopíruji soubor do: ${tempFile.absolutePath}")
+                sourceFile.copyTo(tempFile, overwrite = true)
+            }
+
+            // Vytvoření výstupního souboru
+            val outputFile = File.createTempFile("cropped_", ".jpg", context.cacheDir)
+            LogHelper.d(TAG, "cropImage: Výstupní soubor: ${outputFile.absolutePath}")
+
+            // Vytvoření URI pro dočasný soubor
+            val tempUri = FileProvider.getUriForFile(
+                activity,
+                "${activity.packageName}.fileprovider",
+                tempFile
+            )
+
+            // Vytvoření URI pro výstupní soubor
+            val outputUri = FileProvider.getUriForFile(
+                activity,
+                "${activity.packageName}.fileprovider",
+                outputFile
+            )
+
+            // Vytvoření intentu pro ořezání obrázku
+            val cropIntent = Intent("com.android.camera.action.CROP")
+            cropIntent.setDataAndType(tempUri, "image/*")
+
+            // Nastavení příznaků pro ořezání
+            cropIntent.putExtra("crop", "true")
+            cropIntent.putExtra("aspectX", 1586) // Poměr stran kreditní karty (85.6mm × 54mm)
+            cropIntent.putExtra("aspectY", 1000)
+            cropIntent.putExtra("scale", true)
+            cropIntent.putExtra("return-data", false)
+            cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri)
+
+            // Přidání oprávnění pro URI
+            cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            cropIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+
+            // Udělení oprávnění všem potenciálním aplikacím, které mohou zpracovat intent
+            val resInfoList = activity.packageManager.queryIntentActivities(cropIntent, PackageManager.MATCH_DEFAULT_ONLY)
+            for (resolveInfo in resInfoList) {
+                val packageName = resolveInfo.activityInfo.packageName
+                activity.grantUriPermission(
+                    packageName,
+                    tempUri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+                activity.grantUriPermission(
+                    packageName,
+                    outputUri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+                LogHelper.d(TAG, "cropImage: Uděleno oprávnění pro: $packageName")
+            }
+
+            // Kontrola, zda je dostupná aplikace pro ořezání
+            val hasResolver = cropIntent.resolveActivity(activity.packageManager) != null
+            LogHelper.d(TAG, "cropImage: Nalezena aplikace pro ořezávání: $hasResolver")
+
+            if (hasResolver) {
+                // Spuštění aktivity pro ořezání
+                activity.startActivityForResult(cropIntent, REQUEST_IMAGE_CROP)
+
+                // Uložení cesty k výstupnímu souboru
+                return outputFile.absolutePath
+            } else {
+                LogHelper.e(TAG, "Žádná aplikace pro ořezání obrázků není k dispozici")
+                tempFile.delete()
+                outputFile.delete()
+                return null
+            }
+        } catch (e: Exception) {
+            LogHelper.e(TAG, "Chyba při přípravě ořezání obrázku: ${e.message}", e)
             return null
         }
     }

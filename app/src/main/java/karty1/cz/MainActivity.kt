@@ -21,11 +21,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import karty1.cz.util.BackupHelper
+
 import java.io.File
 import java.io.FileOutputStream
 import android.Manifest
 import android.content.pm.PackageManager
+import android.text.InputType
 import karty1.cz.model.Card
 import karty1.cz.util.LogHelper
 import karty1.cz.util.PreferenceManager
@@ -42,7 +43,7 @@ class MainActivity : BaseActivity() {
         private const val TAG = "MainActivity"
         private const val REQUEST_CODE_ADD_CARD = 1
         private const val REQUEST_CODE_VIEW_CARD = 2
-        private const val REQUEST_CODE_SELECT_BACKUP = 3
+
         private const val REQUEST_STORAGE_PERMISSION = 100
     }
 
@@ -219,14 +220,6 @@ class MainActivity : BaseActivity() {
                 showThemeSelectionDialog()
                 true
             }
-            R.id.action_backup -> {
-                backupData()
-                true
-            }
-            R.id.action_restore -> {
-                restoreData()
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -314,80 +307,14 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    /**
-     * Zálohuje data aplikace.
-     */
-    private fun backupData() {
-        // Kontrola oprávnění pro přístup k úložišti
-        if (!hasStoragePermission()) {
-            requestStoragePermission()
-            return
-        }
 
-        // Vytvoření zálohy
-        val backupHelper = BackupHelper()
-        val backupFile = backupHelper.createBackup(this, preferenceManager.getEncryptionPassword())
-
-        if (backupFile != null) {
-            Toast.makeText(this, getString(R.string.backup_created, backupFile.absolutePath), Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText(this, getString(R.string.backup_failed), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    /**
-     * Obnoví data aplikace ze zálohy.
-     */
-    private fun restoreData() {
-        // Kontrola oprávnění pro přístup k úložišti
-        if (!hasStoragePermission()) {
-            requestStoragePermission()
-            return
-        }
-
-        // Výběr souboru zálohy
-        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-            addCategory(Intent.CATEGORY_OPENABLE)
-            type = "*/*"
-            putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream"))
-        }
-        startActivityForResult(intent, REQUEST_CODE_SELECT_BACKUP)
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                REQUEST_CODE_SELECT_BACKUP -> {
-                    data?.data?.let { uri ->
-                        // Kopírování vybraného souboru do dočasného souboru
-                        val inputStream = contentResolver.openInputStream(uri)
-                        val tempFile = File(cacheDir, "backup.enc")
-                        val outputStream = FileOutputStream(tempFile)
-                        inputStream?.copyTo(outputStream)
-                        inputStream?.close()
-                        outputStream.close()
 
-                        // Obnovení zálohy
-                        val backupHelper = BackupHelper()
-                        val success = backupHelper.restoreBackup(this, tempFile, preferenceManager.getEncryptionPassword())
-
-                        if (success) {
-                            Toast.makeText(this, getString(R.string.restore_successful), Toast.LENGTH_SHORT).show()
-                            // Restart aplikace pro načtení obnovených dat
-                            val intent = Intent(this, SplashActivity::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            Toast.makeText(this, getString(R.string.restore_failed), Toast.LENGTH_SHORT).show()
-                        }
-
-                        // Smazání dočasného souboru
-                        tempFile.delete()
-                    }
-                }
                 REQUEST_CODE_ADD_CARD -> {
                     // Karta byla přidána, nic nemusíme dělat, LiveData se aktualizuje automaticky
                 }
@@ -406,12 +333,14 @@ class MainActivity : BaseActivity() {
                 // Oprávnění bylo uděleno, můžeme pokračovat
                 if (permissions[0] == Manifest.permission.READ_EXTERNAL_STORAGE ||
                     permissions[0] == Manifest.permission.READ_MEDIA_IMAGES) {
-                    // Zkusíme znovu zálohovat nebo obnovit data
+                    // Pokračování v operaci, která vyžadovala oprávnění
                 }
             } else {
                 // Oprávnění bylo zamítnuto
-                Toast.makeText(this, "Pro zálohování a obnovení dat je potřeba přístup k úložišti", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
             }
         }
     }
+
+
 }

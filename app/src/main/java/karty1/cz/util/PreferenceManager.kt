@@ -59,13 +59,13 @@ class PreferenceManager(context: Context) {
     }
 
     /**
-     * Uloží heslo pro šifrování fotografií.
+     * Získá heslo pro šifrování fotografií.
      * Používáme stejné heslo jako pro přihlášení, ale ukládáme ho v nešifrované podobě pro použití při šifrování.
      */
     fun getEncryptionPassword(): String {
-        // Získání hesla z hash hodnoty - používáme původní heslo pro šifrování
+        // Získání hesla z AppConfig - používáme původní heslo pro šifrování
         // Toto je zjednodušené řešení - v reálné aplikaci by bylo lepší použít KeyStore
-        return "defaultPassword" // Toto by mělo být nahrazeno skutečným heslem uživatele
+        return karty1.cz.AppConfig.encryptionPassword
     }
 
     /**

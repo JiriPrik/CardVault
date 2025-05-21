@@ -48,6 +48,7 @@ class CardEditActivity : BaseActivity() {
     private var frontImagePath: String? = null
     private var backImagePath: String? = null
     private var isFrontCapture = true // True pro přední stranu, False pro zadní stranu
+    private var currentCropOutputPath: String? = null
 
     // Proměnná pro práci se skenerem čárových kódů
     private lateinit var barcodeScannerHelper: BarcodeScannerHelper
@@ -64,8 +65,11 @@ class CardEditActivity : BaseActivity() {
     private lateinit var imageBack: ImageView
     private lateinit var btnCaptureFront: Button
     private lateinit var btnCaptureBack: Button
+    private lateinit var btnCropFront: Button
+    private lateinit var btnCropBack: Button
     // Odstraněno duplicitní tlačítko pro skenování čárového kódu
     private lateinit var btnChangeBarcodeType: Button
+    private lateinit var btnCopyBarcodeToCardNumber: Button
     private lateinit var fabSave: FloatingActionButton
     private lateinit var barcodeDataLayout: TextInputLayout
 
@@ -158,8 +162,11 @@ class CardEditActivity : BaseActivity() {
             imageBack = findViewById(R.id.imageBack)
             btnCaptureFront = findViewById(R.id.btnCaptureFront)
             btnCaptureBack = findViewById(R.id.btnCaptureBack)
+            btnCropFront = findViewById(R.id.btnCropFront)
+            btnCropBack = findViewById(R.id.btnCropBack)
             // Odstraněno duplicitní tlačítko pro skenování čárového kódu
             btnChangeBarcodeType = findViewById(R.id.btnChangeBarcodeType)
+            btnCopyBarcodeToCardNumber = findViewById(R.id.btnCopyBarcodeToCardNumber)
             fabSave = findViewById(R.id.fabSave)
             barcodeDataLayout = findViewById(R.id.barcodeDataLayout)
             LogHelper.d(TAG, "initViews: UI komponenty úspěšně inicializovány")
@@ -220,6 +227,47 @@ class CardEditActivity : BaseActivity() {
             // Nastavení příznaků pro zadní stranu
             isFrontCapture = false
             dispatchTakePictureIntent()
+        }
+
+        // Tlačítka pro ořez fotografií
+        btnCropFront.setOnClickListener {
+            if (frontImagePath == null) {
+                Toast.makeText(this, R.string.no_image_to_crop, Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Nastavení příznaků pro přední stranu
+            isFrontCapture = true
+            cropCardImage(frontImagePath)
+        }
+
+        btnCropBack.setOnClickListener {
+            if (backImagePath == null) {
+                Toast.makeText(this, R.string.no_image_to_crop, Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Nastavení příznaků pro zadní stranu
+            isFrontCapture = false
+            cropCardImage(backImagePath)
+        }
+
+        // Tlačítko pro kopírování čárového kódu do čísla karty
+        btnCopyBarcodeToCardNumber.setOnClickListener {
+            LogHelper.d(TAG, "Kliknutí na tlačítko pro kopírování čárového kódu do čísla karty")
+
+            // Získání dat čárového kódu
+            val barcodeData = editBarcodeData.text.toString()
+
+            if (barcodeData.isNotEmpty()) {
+                // Kopírování dat čárového kódu do pole čísla karty
+                editCardNumber.setText(barcodeData)
+                Toast.makeText(this, R.string.barcode_copied, Toast.LENGTH_SHORT).show()
+                LogHelper.d(TAG, "Čárový kód byl zkopírován do čísla karty: $barcodeData")
+            } else {
+                Toast.makeText(this, R.string.no_barcode_to_copy, Toast.LENGTH_SHORT).show()
+                LogHelper.d(TAG, "Žádný čárový kód k zkopírování")
+            }
         }
 
         // Tlačítko pro uložení karty
@@ -571,6 +619,64 @@ class CardEditActivity : BaseActivity() {
                 } else {
                     LogHelper.w(TAG, "onActivityResult: Cesta k fotografii je null")
                 }
+            } else if (requestCode == CameraHelper.REQUEST_IMAGE_CROP && resultCode == Activity.RESULT_OK) {
+                // Obrázek byl ořezán úspěšně
+                LogHelper.i(TAG, "onActivityResult: Obrázek ořezán, cesta: $currentCropOutputPath")
+
+                if (currentCropOutputPath != null) {
+                    // Kontrola, zda soubor existuje
+                    val outputFile = File(currentCropOutputPath!!)
+                    if (!outputFile.exists()) {
+                        LogHelper.e(TAG, "onActivityResult: Výstupní soubor neexistuje: $currentCropOutputPath")
+                        Toast.makeText(this, R.string.error_cropping_image, Toast.LENGTH_SHORT).show()
+                        return
+                    }
+
+                    LogHelper.d(TAG, "onActivityResult: Výstupní soubor existuje, velikost: ${outputFile.length()} bytů")
+
+                    // Načtení ořezaného obrázku a zobrazení náhledu
+                    val bitmap = cameraHelper.loadImageFromFile(currentCropOutputPath)
+                    if (bitmap != null) {
+                        LogHelper.d(TAG, "onActivityResult: Bitmap úspěšně načten, rozměry: ${bitmap.width}x${bitmap.height}")
+
+                        // Pokud je zapnuto šifrování, zašifrujeme fotografii
+                        val photoPath = currentCropOutputPath // Uložení do lokální proměnné pro bezpečné použití
+                        if (photoPath != null && AppConfig.encryptImages && AppConfig.encryptionPassword.isNotEmpty()) {
+                            LogHelper.d(TAG, "onActivityResult: Šifrování ořezané fotografie")
+
+                            // Zašifrování fotografie
+                            val encryptedPath = cameraHelper.encryptExistingFile(photoPath, AppConfig.encryptionPassword)
+
+                            if (encryptedPath != null) {
+                                // Aktualizace cesty k fotografii
+                                currentCropOutputPath = encryptedPath
+                                LogHelper.d(TAG, "onActivityResult: Ořezaná fotografie úspěšně zašifrována: $encryptedPath")
+                            } else {
+                                LogHelper.e(TAG, "onActivityResult: Nepodařilo se zašifrovat ořezanou fotografii")
+                            }
+                        }
+
+                        if (isFrontCapture) {
+                            // Uložení cesty k přední straně karty
+                            frontImagePath = currentCropOutputPath
+                            imageFront.setImageBitmap(bitmap)
+                            LogHelper.d(TAG, "onActivityResult: Nastaven ořezaný přední obrázek karty: $frontImagePath")
+                        } else {
+                            // Uložení cesty k zadní straně karty
+                            backImagePath = currentCropOutputPath
+                            imageBack.setImageBitmap(bitmap)
+                            LogHelper.d(TAG, "onActivityResult: Nastaven ořezaný zadní obrázek karty: $backImagePath")
+                        }
+
+                        Toast.makeText(this, R.string.image_cropped, Toast.LENGTH_SHORT).show()
+                    } else {
+                        LogHelper.w(TAG, "onActivityResult: Nelze načíst ořezanou fotografii z cesty: $currentCropOutputPath")
+                        Toast.makeText(this, R.string.error_cropping_image, Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    LogHelper.w(TAG, "onActivityResult: Cesta k ořezané fotografii je null")
+                    Toast.makeText(this, R.string.error_cropping_image, Toast.LENGTH_SHORT).show()
+                }
             } else {
                 // Zpracování výsledku skenování čárového kódu
                 val scanResult = barcodeScannerHelper.processScanResult(requestCode, resultCode, data)
@@ -620,6 +726,43 @@ class CardEditActivity : BaseActivity() {
                     Toast.makeText(this, "Pro uložení fotografie je potřeba povolit přístup k úložišti", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    /**
+     * Spustí aktivitu pro ořezání obrázku karty.
+     */
+    private fun cropCardImage(imagePath: String?) {
+        if (imagePath == null) {
+            Toast.makeText(this, R.string.no_image_to_crop, Toast.LENGTH_SHORT).show()
+            LogHelper.e(TAG, "cropCardImage: Cesta k obrázku je null")
+            return
+        }
+
+        LogHelper.d(TAG, "cropCardImage: Začínám ořezávat obrázek: $imagePath")
+
+        // Kontrola, zda soubor existuje
+        val file = File(imagePath)
+        if (!file.exists()) {
+            Toast.makeText(this, R.string.no_image_to_crop, Toast.LENGTH_SHORT).show()
+            LogHelper.e(TAG, "cropCardImage: Soubor neexistuje: $imagePath")
+            return
+        }
+
+        // Kontrola, zda je obrázek zašifrovaný
+        val isEncrypted = imagePath.endsWith(".enc")
+        val password = if (isEncrypted) AppConfig.encryptionPassword else null
+
+        LogHelper.d(TAG, "cropCardImage: Obrázek je zašifrovaný: $isEncrypted, heslo je k dispozici: ${password != null}")
+
+        // Spuštění aktivity pro ořezání obrázku
+        currentCropOutputPath = cameraHelper.cropImage(this, imagePath, password)
+
+        if (currentCropOutputPath == null) {
+            Toast.makeText(this, R.string.error_cropping_image, Toast.LENGTH_SHORT).show()
+            LogHelper.e(TAG, "cropCardImage: Nepodařilo se připravit ořezávání obrázku")
+        } else {
+            LogHelper.d(TAG, "cropCardImage: Ořezávání připraveno, výstupní cesta: $currentCropOutputPath")
         }
     }
 

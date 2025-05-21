@@ -15,16 +15,6 @@
         android:title="@string/theme"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_backup"
-        android:icon="@android:drawable/ic_menu_save"
-        android:title="@string/backup"
-        app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_restore"
-        android:icon="@android:drawable/ic_menu_revert"
-        android:title="@string/restore"
-        app:showAsAction="never" />
 
 </menu>

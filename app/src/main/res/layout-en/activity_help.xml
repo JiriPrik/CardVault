@@ -213,7 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="The application allows you to backup and restore your data (card database and photos). The backup is encrypted with your login password.\n\nTo create a backup:\n1. Click on the three dots in the top right corner of the main screen\n2. Select 'Backup data'\n3. The backup will be saved to the Download/KartyBackup folder on your device\n\nTo restore data from a backup:\n1. Click on the three dots in the top right corner of the main screen\n2. Select 'Restore data'\n3. Select the backup file\n4. The data will be restored and the application will restart"
+                android:text="The application allows you to store your cards and their photos. All data is stored only on your device and is encrypted with your login password."
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp" />
 
