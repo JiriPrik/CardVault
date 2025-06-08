@@ -13,10 +13,12 @@ import java.util.Date
 
 /**
  * ViewModel pro práci s kartami.
+ * ViewModel for handling card operations.
  */
 class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CardRepository
+    // LiveData holding the list of all cards.
     val allCards: LiveData<List<Card>>
 
     init {
@@ -27,6 +29,8 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
      * Vložení nové karty.
+     * Inserts a new card into the database.
+     * @param card The card to insert.
      */
     fun insertCard(card: Card) = viewModelScope.launch(Dispatchers.IO) {
         repository.insertCard(card)
@@ -34,6 +38,8 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
      * Aktualizace existující karty.
+     * Updates an existing card in the database.
+     * @param card The card to update.
      */
     fun updateCard(card: Card) = viewModelScope.launch(Dispatchers.IO) {
         repository.updateCard(card)
@@ -41,6 +47,8 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
      * Smazání karty.
+     * Deletes a card from the database.
+     * @param card The card to delete.
      */
     fun deleteCard(card: Card) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteCard(card)
@@ -48,9 +56,11 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
      * Smazání karty podle ID.
+     * Deletes a card by its ID.
+     * @param id The ID of the card to delete.
      */
     fun deleteCardById(id: Long) = viewModelScope.launch(Dispatchers.IO) {
-        val card = repository.getCardByIdSync(id)
+        val card = repository.getCardByIdSync(id) // Synchronously fetch card for deletion
         if (card != null) {
             repository.deleteCard(card)
         }
@@ -58,6 +68,9 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
      * Vyhledávání karet podle dotazu.
+     * Searches for cards based on a query string.
+     * @param query The search query.
+     * @return LiveData list of cards matching the query.
      */
     fun searchCards(query: String): LiveData<List<Card>> {
         return repository.searchCards(query)
@@ -65,6 +78,9 @@ class CardViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
      * Získání karty podle ID.
+     * Retrieves a card by its ID.
+     * @param id The ID of the card to retrieve.
+     * @return LiveData containing the card.
      */
     fun getCardById(id: Long): LiveData<Card> {
         return repository.getCardById(id)
